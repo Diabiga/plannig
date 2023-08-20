@@ -2,7 +2,11 @@ from django.db import models
 
 class Niveau(models.Model):
     nom = models.CharField(max_length=50)
-    groupes = models.ManyToManyField('Groupe', related_name='niveaux')
+   # groupes = models.ManyToManyField('Groupe', related_name='niveaux')
+    class Meta:
+        verbose_name="Niveau"
+    def __str__(self):
+        return self.nom
 '''
 class Matiere(models.Model):
     nom = models.CharField(max_length=100)
@@ -107,3 +111,6 @@ class RunParam(models.Model):
     heure = models.OneToOneField(Heure, on_delete=models.CASCADE, blank=True ,null=True)
     niveau = models.OneToOneField(Niveau, on_delete=models.CASCADE, blank=True ,null=True)
     jours = models.OneToOneField(Jours, on_delete=models.CASCADE, blank=True ,null=True)
+    class Meta:
+        verbose_name="RunParam"
+   

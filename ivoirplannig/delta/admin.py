@@ -1,11 +1,20 @@
 from django.contrib import admin
-from delta.models import Matiere, Professeur, Grade , Salle, Batiment, Duree, Jours, Heure, Cours,Groupe
+from delta.models import Matiere, Professeur, Grade , Salle, Batiment, Duree, Jours, Heure, Cours,Groupe, RunParam,Niveau
 
 
 
 
 
 # Register your models here.
+@admin.register(Niveau)
+class Niveau(admin.ModelAdmin):
+    pass
+
+@admin.register(RunParam)
+class RunParam(admin.ModelAdmin):
+    pass
+
+
 @admin.register(Matiere)
 class planning2(admin.ModelAdmin):
     pass
