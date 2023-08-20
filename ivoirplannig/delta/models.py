@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Niveau(models.Model):
     nom = models.CharField(max_length=50)
    # groupes = models.ManyToManyField('Groupe', related_name='niveaux')
@@ -18,21 +19,26 @@ class Matiere(models.Model):
 class Matiere(models.Model):
     nom = models.CharField(max_length=100)
     niveaux = models.ManyToManyField(Niveau, related_name='matieres')
+    class Meta:
+        verbose_name="Matiere"
+    def __str__(self):
+        return self.nom
     
 class Grade(models.Model):
     nom = models.CharField(max_length=50)
     heure= models.IntegerField(blank=True, null=True)# nombre d'eure par semaine en fonction de la grade 
-    status=models.BooleanField(blank=True, null=True)#disponible ou pas 
+ 
     def __str__(self):
         return self.nom
 
 class Professeur(models.Model):
-    matricule=models.CharField(max_length=50)
+    matricule = models.CharField(max_length=5, unique=True)
     nom = models.CharField(max_length=50)
-    prenom=models.TextField()
+    prenom=models.CharField(max_length=100)
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
-    cycle = models.ForeignKey('Cycle', on_delete=models.CASCADE)
+    #cycle = models.ForeignKey('Cycle', on_delete=models.CASCADE)
     matieres = models.ManyToManyField(Matiere, related_name='professeurs')
+    status=models.BooleanField(blank=True, null=True)
 
 class Cycle(models.Model):
     libelle = models.CharField(max_length=50)
@@ -59,7 +65,9 @@ class Duree(models.Model):
     matieres = models.ManyToManyField(Matiere, related_name='durees')
     niveaux = models.ManyToManyField(Niveau, related_name='durees')
     class Meta:
-        verbose_name="Durée"
+        verbose_name="Duree"
+    def __str__(self):
+        return self.libelle
 
 class Jours(models.Model):
     libelle = models.CharField(max_length=20)

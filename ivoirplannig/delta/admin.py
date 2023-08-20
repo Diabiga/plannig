@@ -17,20 +17,24 @@ class RunParam(admin.ModelAdmin):
 
 @admin.register(Matiere)
 class planning2(admin.ModelAdmin):
-    pass
+    list_display=("nom",)
+    
+    
 @admin.register(Groupe)
 class planningGroupe(admin.ModelAdmin):
     pass
 
 @admin.register(Professeur)
 class profModel(admin.ModelAdmin):
-     list_display=("matricule","nom","prenom","grade")
+     list_display=("matricule","nom","prenom","grade","status")
      empty_value_display="inconnu"
   
 
 @admin.register(Grade )
 class gradeModel(admin.ModelAdmin):
-    pass
+    list_display=( "nom",
+    "heure",
+   )
 @admin.register(Batiment)
 class planning7(admin.ModelAdmin):
     pass
