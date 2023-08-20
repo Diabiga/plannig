@@ -9,12 +9,16 @@ class Matiere(models.Model):
     groupes = models.ManyToManyField('Groupe', related_name='matieres')
 '''
 
+
+    
 class Matiere(models.Model):
     nom = models.CharField(max_length=100)
     niveaux = models.ManyToManyField(Niveau, related_name='matieres')
     
 class Grade(models.Model):
     nom = models.CharField(max_length=50)
+    heure= models.IntegerField(blank=True, null=True)# nombre d'eure par semaine en fonction de la grade 
+    status=models.BooleanField(blank=True, null=True)#disponible ou pas 
     def __str__(self):
         return self.nom
 
@@ -98,3 +102,8 @@ class Groupe(models.Model):
         verbose_name="groupe"
     def __str__(self):
         return self.nom
+    
+class RunParam(models.Model):
+    heure = models.OneToOneField(Heure, on_delete=models.CASCADE, blank=True ,null=True)
+    niveau = models.OneToOneField(Niveau, on_delete=models.CASCADE, blank=True ,null=True)
+    jours = models.OneToOneField(Jours, on_delete=models.CASCADE, blank=True ,null=True)
