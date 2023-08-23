@@ -65,8 +65,8 @@ class Professeur(models.Model):
     prenom = models.CharField(max_length=100)
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     matieres = models.ManyToManyField(Matiere, related_name='professeurs')
-    groupes = models.ManyToManyField('Groupe', related_name='professeurs_associes', blank=True, null=True)
-    status = models.BooleanField(blank=True, null=True)
+    groupes = models.ManyToManyField('Groupe', related_name='professeurs_associes')
+    status = models.BooleanField()
     class Meta:
         verbose_name = "Professeur"
 
@@ -77,7 +77,7 @@ class Professeur(models.Model):
 class Groupe(models.Model):
     nom = models.CharField(max_length=50)
     niveau = models.ForeignKey(Niveau, on_delete=models.CASCADE)
-    professeurs = models.ManyToManyField(Professeur, related_name='groupes_associes', blank=True, null=True)
+    professeurs = models.ManyToManyField(Professeur, related_name='groupes_associes')
     matieres = models.ManyToManyField(Matiere, related_name='groupes')
 
     class Meta:
@@ -137,7 +137,7 @@ class Cours(models.Model):
     heure = models.ForeignKey(Heure, on_delete=models.CASCADE)
     jours = models.ForeignKey(Jours, on_delete=models.CASCADE)
     salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
-    flag = models.CharField(max_length=1,blank=True,null=True)
+    status = models.BooleanField()
     class Meta:
         verbose_name="Cour"
     def __str__(self):
