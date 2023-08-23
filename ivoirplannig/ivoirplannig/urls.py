@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from delta.views import index
+from delta.views import index, login
 
 urlpatterns = [
     path('delta-admin/', admin.site.urls),
+    path('login',login,name="login"),
+    
     path('',index,name='home')
 ]
