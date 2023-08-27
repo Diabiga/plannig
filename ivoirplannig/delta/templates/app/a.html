@@ -63,10 +63,10 @@
         </a>
         <div class="collapse" id="collapseParametrage" aria-labelledby="headingParametrage" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="#">Professeurs</a>
-                <a class="nav-link" href="#">Groupes</a>
-                <a class="nav-link" href="#">Cours</a>
-                <a class="nav-link" href="#">Matières</a>
+                <a class="nav-link" href="{% url 'prof' %}">Professeurs</a>
+                <a class="nav-link" href="{% url 'groupes' %}">Groupes</a>
+                <a class="nav-link" href="{% url 'cours' %}">Cours</a>
+                <a class="nav-link" href="{% url 'mat' %}">Matières</a>
             </nav>
         </div>
     </div>
@@ -96,8 +96,8 @@
     </a>
     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
         <nav class="sb-sidenav-menu-nested nav">
-            <a class="nav-link" href="layout-static.html">Emploi du temps groupe</a>
-            <a class="nav-link" href="layout-sidenav-light.html">Emploi du temps professeur</a>
+            <a class="nav-link" href="{% url 'rltgroupes' %}">Emploi du temps groupe</a>
+            <a class="nav-link" href="{% url 'prof' %}">Emploi du temps professeur</a>
         </nav>
     </div>
   
@@ -115,9 +115,9 @@
         </a>
         <div class="collapse" id="collapseAdmin" aria-labelledby="headingAdmin" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="#">Gestion des utilisateurs</a>
-                <a class="nav-link" href="#">Gestion des rôles</a>
-                <a class="nav-link" href="#">Paramètres de sécurité</a>
+                <a class="nav-link" href="{% url 'user' %}">Gestion des utilisateurs</a>
+                <a class="nav-link" href="{% url 'role' %}">Gestion des rôles</a>
+                <a class="nav-link" href="{% url 'secure' %}">Paramètres de sécurité</a>
             </nav>
         </div>
     </div>

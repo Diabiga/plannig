@@ -16,11 +16,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from delta.views import index, login
+from delta.views import index, login,admin_role,admin_secure,admin_user,para_prof,para_cours,para_groupes,para_mat, rlt_groupes ,rlt_prof,register
 
 urlpatterns = [
     path('delta-admin/', admin.site.urls),
-    path('login',login,name="login"),
+    path('account/login',login,name="login"),
+    path('register',login,name="login"),
     
-    path('',index,name='home')
+    path('admin_role',admin_role,name="role"),
+    path('admin_secure',admin_secure,name="secure"),
+    path('admin_user',admin_user,name="user"),
+    
+      path('param/professeur',para_prof,name="prof"),
+      path('param/cours',para_cours,name="cours"),
+      path('param/groupes',para_groupes,name="groupes"),
+      path('param/matiere',para_mat,name="mat"),
+    
+    
+      path('resltat/groupes',rlt_groupes,name="rltgroupes"),
+      path('resulta/traitement',rlt_prof,name="prof"),
+    
+    path('',login,name='home'),
+    path('register',register,name='register'),
+        
+    path('home',index,name='tb')
 ]
